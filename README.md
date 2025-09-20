@@ -44,13 +44,3 @@ The project features a **sophisticated black-and-white aesthetic**, enhanced wit
 - [Node.js](https://nodejs.org/) (v16+ recommended)
 - [NPM](https://www.npmjs.com/)
 
-### ⚙️ Installation
-```bash
-# Clone the repository
-git clone https://github.com/your-username/estative-expo-2025.git
-
-# Navigate to the project folder
-cd estative-expo-2025
-
-# Install backend dependencies
-npm install
