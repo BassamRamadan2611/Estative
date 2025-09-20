@@ -1,53 +1,56 @@
-Estative Crypto Property Expo 2025 - Full Stack Application
-Description
-Estative Crypto Property Expo 2025 is a modern, responsive full-stack web application built with Tailwind CSS, Pure CSS, and Vanilla JavaScript. This project promotes and manages registrations for a premier blockchain real estate event with a sophisticated black-and-white design, advanced UI interactions, and seamless Node.js backend integration using Express and Nodemailer.
-The frontend combines Tailwind's utility-first approach with custom CSS animations for a premium user experience, while the backend handles secure form processing and email notifications.
-Key Features
-Frontend
+# Estative Crypto Property Expo 2025 - Full Stack Application
 
-Modern Black & White Design: Sophisticated monochrome aesthetic with glass-morphism effects and custom CSS animations
-Tailwind CSS + Pure CSS: Hybrid approach combining utility classes with custom animations and transitions
-Vanilla JavaScript: Lightweight, dependency-free interactivity with modern ES6+ features
-Fully Responsive: Mobile-first design with comprehensive breakpoints and touch-friendly interactions
-Interactive Hero Slider: Custom-built carousel with CSS transitions and JavaScript controls
-Dynamic Registration System: Category-based forms with real-time validation and animated feedback
-Enhanced UX: Custom scrollbars, shimmer effects, loading states, and smooth micro-interactions
+## 📖 Description
+**Estative Crypto Property Expo 2025** is a modern, responsive full-stack web application designed to promote and manage registrations for a premier blockchain real estate event.  
 
-Backend
+The project features a **sophisticated black-and-white aesthetic**, enhanced with **glass-morphism effects, custom animations, and smooth interactions**. The backend integrates **Node.js, Express, and Nodemailer** to process registrations securely and send automated email notifications.  
 
-Node.js + Express: RESTful API server with CORS and body parsing middleware
-Nodemailer Integration: Secure email notifications using Gmail SMTP with HTML templates
-Form Validation: Server-side validation for name, email, and category data
-Error Handling: Comprehensive error handling with JSON responses and console logging
+---
 
-Tech Stack
+## ✨ Key Features
 
+### 🔹 Frontend
+- 🎨 **Modern Black & White Design** with glass-morphism and premium aesthetics  
+- ⚡ **Tailwind CSS + Pure CSS** for flexible utility classes and advanced animations  
+- 🖥️ **Vanilla JavaScript (ES6+)** for lightweight interactivity (no heavy frameworks)  
+- 📱 **Fully Responsive** (mobile-first with touch-friendly interactions)  
+- 🖼️ **Interactive Hero Slider** built with CSS transitions + JavaScript controls  
+- 📝 **Dynamic Registration System** with real-time validation & animated feedback  
+- 🪄 **Enhanced UX**: custom scrollbars, shimmer effects, loading states, micro-interactions  
 
+### 🔹 Backend
+- 🟢 **Node.js + Express.js** RESTful server with CORS & body parsing  
+- 📧 **Nodemailer Integration** using Gmail SMTP with secure App Passwords  
+- ✅ **Server-side Validation** for form submissions (name, email, category)  
+- 🚨 **Comprehensive Error Handling** with JSON responses & console logging  
 
+---
 
+## 🛠️ Tech Stack
 
+| Category   | Technologies |
+|------------|-------------|
+| **Frontend** | HTML5, Tailwind CSS, Pure CSS3, Vanilla JavaScript, Font Awesome |
+| **Backend**  | Node.js, Express.js, Nodemailer, CORS, Body-Parser |
+| **Email**    | Gmail SMTP (App Password authentication) |
+| **Animations** | CSS Keyframes, Cubic-bezier transitions, CSS Custom Properties |
+| **Deployment** | Static hosting (Frontend) + Node.js server (Backend) |
 
+---
 
+## 🚀 Getting Started
 
+### 📌 Prerequisites
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [NPM](https://www.npmjs.com/)
 
+### ⚙️ Installation
+```bash
+# Clone the repository
+git clone https://github.com/your-username/estative-expo-2025.git
 
+# Navigate to the project folder
+cd estative-expo-2025
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CategoryTechnologiesFrontendHTML5, Tailwind CSS, Pure CSS3, Vanilla JavaScript, Font AwesomeBackendNode.js, Express.js, Nodemailer, CORS, Body-ParserEmailGmail SMTP with App Password authenticationAnimationsCSS Keyframes, Cubic-bezier Transitions, CSS Custom PropertiesDeploymentStatic hosting (Frontend) + Node.js server (Backend)
+# Install backend dependencies
+npm install
