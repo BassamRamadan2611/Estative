@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>                  
+ Estative | Leading Real State</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Flowbite CSS (built on Tailwind) -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.5.3/dist/flowbite.min.css" rel="stylesheet">
+    
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <style>
+        /* Black and White Theme */
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #ffffff;
+            --accent-text: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+
+        /* Enhanced Countdown Styles */
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 0.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-medium);
+            min-width: 80px;
+        }
+        
+        .countdown-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-bg);
+            line-height: 1;
+            text-align: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .countdown-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        
+        @media (min-width: 640px) {
+            .countdown-value {
+                font-size: 2.5rem;
+                min-width: 100px;
+            }
+            .countdown-label {
+                font-size: 0.875rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .countdown-value {
+                font-size: 3rem;
+                min-width: 120px;
+            }
+        }
+
+        /* Enhanced Navigation */
+        .navbar {
+         
+            background: rgba(26, 26, 26, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-medium);
+        }
+
+  
+
+        /* Hero Section Enhancements */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
+        }
+
+       
+        /* Enhanced Button Styles */
+        .cta-button {
+            background: var(--secondary-bg);
+            color: var(--primary-bg);
+            border: 2px solid var(--primary-bg);
+            padding: 1rem 2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-large);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background: var(--primary-bg);
+            color: var(--secondary-bg);
+            border-color: var(--primary-bg);
+        }
+
+        /* Category Buttons */
+        .category-btn {
+            background: var(--secondary-bg);
+            color: var(--text-secondary);
+            border: 2px solid #e5e7eb;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 10px;
+        }
+
+     
+
+        .category-btn:hover,
+        .category-btn.active {
+            transform: translateY(-3px);
+            border-color: var(--primary-bg);
+            color: white;
+            box-shadow: var(--shadow-medium);
+            background-color: black;
+        }
+
+        /* Form Enhancements */
+        .form-container {
+            background: #fafafa;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+        }
+
+        .form-input {
+            background: var(--secondary-bg);
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-light);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-bg);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Header Section */
+        .form-header {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #333333 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Success Message */
+        .success-message.show,
+        .error-message.show {
+            animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--primary-bg);
+            color: var(--secondary-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--secondary-bg);
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 640px) {
+            .countdown-item {
+                margin: 0 0.25rem;
+                min-width: 60px;
+                padding: 0.75rem;
+            }
+            
+            .countdown-value {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.875rem;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+        }
+
+        /* Smooth transitions for slider */
+        .carousel-transition {
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+         .map-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .map-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        
+        .map-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .location-info {
+            padding: 1.5rem;
+            background: white;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .info-card {
+            padding: 1.25rem;
+            border-radius: 12px;
+            background: #f8fafc;
+        }
+        
+        .info-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card h3 i {
+            margin-right: 0.75rem;
+            color: #3b82f6;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 0.75rem;
+        }
+        
+        .info-item i {
+            color: #3b82f6;
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+            min-width: 20px;
+        }
+        
+        .info-item p {
+            flex: 1;
+        }
+        
+        .directions-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            margin-top: 1rem;
+        }
+        
+        .directions-btn:hover {
+            background: #2563eb;
+        }
+        
+        .directions-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .location-info {
+                padding: 1rem;
+            }
+            
+            .info-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body >
+
+    <div class="container">
+    <!-- Enhanced Navigation -->
+    <nav class="navbar fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="container flex flex-wrap justify-between items-center mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <!-- Logo -->
+            <a href="#" class="flex items-center">
+                <div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center mr-3">
+                                    <img src="images/logo.jpg">
+
+                </div>
+                <span class="self-center text-xl font-bold whitespace-nowrap text-white">Estative</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button data-collapse-toggle="mobile-menu" type="button" 
+                    class="inline-flex items-center p-2 ml-3 
+                    text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 transition-colors" 
+                    aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            
+            <!-- Menu Items -->
+            <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+                <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-semibold">
+                    <li><a href="#contact" data-category="developers" 
+                        class="nav-link block py-2 pr-4 pl-3 text-white 
+   md:border-0 md:hover:text-white md:p-0 transition-colors">Developers</a></li>
+                    <li><a href="#contact" data-category="brokers" 
+                          class="nav-link block py-2 pr-4 pl-3 text-white 
+   md:border-0 md:hover:text-white md:p-0 transition-colors">Brokers</a></li>
+                    <li><a href="#contact" data-category="investors" 
+                         class="nav-link block py-2 pr-4 pl-3 text-white 
+   md:border-0 md:hover:text-white md:p-0 transition-colors">Investors</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+    <!-- Full-Width Image Slider Section with Top Countdown Overlay -->
+    <section class="w-full relative pt-0">
+        <!-- Hero Slider Container -->
+        <div id="hero-carousel" class="relative w-full" data-carousel="slide">
+            <!-- Carousel wrapper - Full height and width -->
+            <div class="relative h-screen overflow-hidden">
+                <!-- Slide 1 -->
+                <div class="hidden duration-1000 ease-in-out carousel-transition" data-carousel-item>
+                    <img src="images/1.jpg" 
+                         class="absolute block w-full h-full object-cover object-center" 
+                         alt="Slide 1">
+                    
+                    <!-- Hero Content Overlay -->
+                    <div class="absolute inset-0 flex flex-col 
+                    justify-center items-center hero-overlay">
+                        <div class="relative z-20 px-4 sm:px-6
+                         lg:px-8 w-full max-w-4xl mx-auto text-center hero-content p-8 rounded-3xl">
+                            <!-- Section Title -->
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl leading-tight">
+Join Us at the Estative Crypto Property Expo 2025                            </h1>
+                         
+                            <!-- Enhanced Countdown Display -->
+                            <div class="flex items-center justify-center space-x-2 sm:space-x-6 bg-white/10 backdrop-blur-xl px-8 py-6 rounded-3xl border border-white/20 shadow-2xl mb-10 w-max mx-auto">
+                                <span class="text-3xl sm:text-4xl">⏰</span>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="days">00</div>
+                                    <div class="countdown-label">Days</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="hours">00</div>
+                                    <div class="countdown-label">Hours</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="minutes">00</div>
+                                    <div class="countdown-label">Minutes</div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <div class="mt-8">
+                                <a href="#contact" 
+                                   class="cta-button inline-flex items-center text-lg tracking-wide">
+                                    <i class="fas fa-rocket mr-3"></i>
+                                    Register Now
+                                </a>
+                            </div>
+                        </div>
+                        
+                
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="hidden duration-1000 ease-in-out carousel-transition" data-carousel-item>
+                    <img src="images/2.jpg" 
+                         class="absolute block w-full h-full object-cover object-center" 
+                         alt="Slide 2">
+                    
+                    <!-- Hero Content Overlay -->
+                    <div class="absolute inset-0 flex flex-col justify-center items-center hero-overlay">
+                        <div class="relative z-20 px-4 sm:px-6 lg:px-8 w-full max-w-4xl mx-auto text-center hero-content p-8 rounded-3xl">
+                            <!-- Section Title -->
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl leading-tight">
+Discover the Future of Real Estate & Blockchain Innovation                            </h1>
+                         
+                            
+                            <!-- Enhanced Countdown Display -->
+                            <div class="flex items-center justify-center space-x-2 sm:space-x-6 bg-white/10 backdrop-blur-xl px-8 py-6 rounded-3xl border border-white/20 shadow-2xl mb-10 w-max mx-auto">
+                                <span class="text-3xl sm:text-4xl">⏰</span>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="days2">00</div>
+                                    <div class="countdown-label">Days</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="hours2">00</div>
+                                    <div class="countdown-label">Hours</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="minutes2">00</div>
+                                    <div class="countdown-label">Minutes</div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <div class="mt-8">
+                                <a href="#contact" 
+                                   class="cta-button inline-flex items-center text-lg tracking-wide">
+                                    <i class="fas fa-rocket mr-3"></i>
+                                    Register Now
+                                </a>
+                            </div>
+                        </div>
+                        
+                  
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="hidden duration-1000 ease-in-out carousel-transition" data-carousel-item>
+                    <img src="images/3.jpg" 
+                         class="absolute block w-full h-full object-cover object-center" 
+                         alt="Slide 3">
+                    
+                    <!-- Hero Content Overlay -->
+                    <div class="absolute inset-0 flex flex-col justify-center items-center hero-overlay">
+                        <div class="relative z-20 px-4 sm:px-6 lg:px-8 w-full max-w-4xl mx-auto text-center hero-content p-8 rounded-3xl">
+                            <!-- Section Title -->
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl leading-tight">
+Invest Smart with Crypto-Driven Property Solution                            </h1>
+                        
+                            
+                            <!-- Enhanced Countdown Display -->
+                            <div class="flex items-center justify-center space-x-2 sm:space-x-6 bg-white/10 backdrop-blur-xl px-8 py-6 rounded-3xl border border-white/20 shadow-2xl mb-10 w-max mx-auto">
+                                <span class="text-3xl sm:text-4xl">⏰</span>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="days3">00</div>
+                                    <div class="countdown-label">Days</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="hours3">00</div>
+                                    <div class="countdown-label">Hours</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="minutes3">00</div>
+                                    <div class="countdown-label">Minutes</div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <div class="mt-8">
+                                <a href="#contact" 
+                                   class="cta-button inline-flex items-center text-lg tracking-wide">
+                                    <i class="fas fa-rocket mr-3"></i>
+                                    Register Now
+                                </a>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Slider indicators -->
+            <div class="absolute z-40 flex -translate-x-1/2 bottom-8 left-1/2 space-x-3">
+                <button type="button" 
+                        class="w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300 active:bg-white active:scale-150 active:shadow-lg" 
+                        aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                <button type="button" 
+                        class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300 active:bg-white active:scale-150 active:shadow-lg" 
+                        aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                <button type="button" 
+                        class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300 active:bg-white active:scale-150 active:shadow-lg" 
+                        aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+            </div>
+
+            <!-- Enhanced Slider controls -->
+            <button type="button" 
+                    class="absolute top-1/2 -translate-y-1/2 left-4 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition-all duration-300 group focus:outline-none shadow-lg" 
+                    data-carousel-prev>
+                <svg class="w-6 h-6 text-white group-hover:text-gray-900 transition-colors" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+                <span class="sr-only">Previous slide</span>
+            </button>
+            <button type="button" 
+                    class="absolute top-1/2 -translate-y-1/2 right-4 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition-all duration-300 group focus:outline-none shadow-lg" 
+                    data-carousel-next>
+                <svg class="w-6 h-6 text-white group-hover:text-gray-900 transition-colors" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="sr-only">Next slide</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Enhanced Registration Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-4xl w-full mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+                <!-- Enhanced Header Section -->
+                <div class="form-header text-white p-8 sm:p-12 text-center relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                            Register for <span class="block">Estative Crypto Property Expo 2025</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl opacity-95 mb-8 max-w-2xl mx-auto leading-relaxed">
+                            Secure your exclusive access to the premier blockchain real estate event of the year
+                        </p>
+                        <div class="w-24 h-1 bg-white mx-auto rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Content Section -->
+                <div class="p-6 sm:p-8 lg:p-12">
+                    <!-- Category Selection -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-12">
+                        <button class="category-btn active bg-blue-200 text-blue-800" data-category="developers">
+                            <i class="fas fa-code mr-2"></i>
+                            For Developers
+                        </button>
+                        <button class="category-btn" data-category="brokers">
+                            <i class="fas fa-handshake mr-2"></i>
+                            For Brokers
+                        </button>
+                        <button class="category-btn" data-category="investors">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            For Investors
+                        </button>
+                    </div>
+
+                    <!-- Forms Container -->
+                    <div class="form-container">
+                        <!-- Developers Form -->
+                        <form id="developers-form" class="form-category">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-name">Full Name *</label>
+                                    <input type="text" id="dev-name" name="dev-name" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Enter your full name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-designation">Designation *</label>
+                                    <input type="text" id="dev-designation" name="dev-designation" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Your job title or role" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-company">Company Name *</label>
+                                    <input type="text" id="dev-company" name="dev-company" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Your company or organization" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-email">Email Address *</label>
+                                    <input type="email" id="dev-email" name="dev-email" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="your.email@company.com" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-mobile">Mobile Number</label>
+                                    <input type="tel" id="dev-mobile" name="dev-mobile" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="+1234567890">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-message">Special Requirements</label>
+                                <textarea id="dev-message" name="dev-message" rows="4" 
+                                          class="form-input w-full resize-vertical border-gray-300" 
+                                          placeholder="Tell us about your technical requirements or specific interests..."></textarea>
+                            </div>
+                        </form>
+
+                        <!-- Brokers Form -->
+                        <form id="brokers-form" class="form-category hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-name">Full Name *</label>
+                                    <input type="text" id="broker-name" name="broker-name" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Enter your full name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-designation">Designation *</label>
+                                    <input type="text" id="broker-designation" name="broker-designation" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Your job title or role" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-company">Brokerage Name *</label>
+                                    <input type="text" id="broker-company" name="broker-company" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Your brokerage or organization" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-mobile">Mobile Number *</label>
+                                    <input type="tel" id="broker-mobile" name="broker-mobile" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="+1234567890" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-email">Email Address *</label>
+                                    <input type="email" id="broker-email" name="broker-email" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="your.email@company.com" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-message">Property Focus</label>
+                                <textarea id="broker-message" name="broker-message" rows="4" 
+                                          class="form-input w-full resize-vertical border-gray-300" 
+                                          placeholder="What types of properties are you most interested in listing?"></textarea>
+                            </div>
+                        </form>
+
+                        <!-- Investors Form -->
+                        <form id="investors-form" class="form-category hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="investor-name">Full Name *</label>
+                                    <input type="text" id="investor-name" name="investor-name" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Enter your full name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="investor-email">Email Address *</label>
+                                    <input type="email" id="investor-email" name="investor-email" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="your.email@company.com" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="investor-mobile">Mobile Number</label>
+                                    <input type="tel" id="investor-mobile" name="investor-mobile" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="+1234567890">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="investor-message">Investment Focus</label>
+                                    <textarea id="investor-message" name="investor-message" rows="4" 
+                                              class="form-input w-full resize-vertical border-gray-300" 
+                                              placeholder="What types of crypto property investments interest you most? (Commercial, Residential, Land, etc.)"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Enhanced Submit Section -->
+                    <div class="mt-12 text-center border-t border-gray-100 pt-8">
+                        <button id="submit-btn" class="cta-button inline-flex items-center text-lg tracking-wide px-8 py-4 mx-auto bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800">
+                            <i class="fas fa-paper-plane mr-3"></i>
+                            Submit Registration
+                        </button>
+                        
+                        <p class="mt-6 text-gray-600 text-sm font-medium max-w-md mx-auto">
+                            Secure your access to the Estative Crypto Property Expo 2025 and join the future of real estate investment
+                        </p>
+                    </div>
+
+                    <!-- Enhanced Success Message -->
+                    <div id="success-message" class="success-message mt-8 p-8 bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-2xl text-center border border-green-200 hidden">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-check-circle text-4xl text-green-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Registration Successful!</h3>
+                        <p class="text-lg mb-6">Thank you for registering. We've sent a confirmation email with all the event details and your personalized access code.</p>
+                        <div class="inline-flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Check your inbox
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Error Message -->
+                    <div id="error-message" class="error-message mt-8 p-6 bg-red-50 text-red-700 rounded-xl text-center border border-red-200 hidden">
+                        <i class="fas fa-exclamation-triangle text-3xl mb-3"></i>
+                        <h3 class="text-lg font-semibold mb-2">Something went wrong</h3>
+                        <p>Please check your information and try again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ <section class="map-section">
+        <div class="section-header">
+            <h2>Event Location</h2>
+            <p>Join us at the prestigious Le Méridien Dubai Hotel & Conference Centre for the Estative Crypto Property Expo 2025</p>
+        </div>
+        
+        <div class="map-container">
+            <div class="map-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.674436516757!2d55.3471396!3d25.2491549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d052da27f4b%3A0x1e08c07158e27b01!2sLe%20M%C3%A9ridien%20Dubai%20Hotel%20%26%20Conference%20Centre!5e1!3m2!1sen!2seg!4v1758388752772!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+        
+        </div>
+    </section>
+
+<!-- Enhanced Footer -->
+<footer class="bg-black py-6">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-center space-x-4 text-center">
+      
+      <!-- Brand -->
+      <div class="flex items-center">
+        <div class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center mr-3">
+          <i class="fas fa-copyright text-white text-sm"></i>
+        </div>
+        <span class="text-white text-sm sm:text-base font-medium">2025 ESTATIVE</span>
+      </div>
+      <!-- Divider -->
+      <span class="text-white">|</span>
+
+      <!-- Rights -->
+      <span class="text-white text-sm sm:text-base">All Rights Reserved</span>
+    </div>
+  </div>
+</footer>
+
+
+
+    <!-- Flowbite JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.5.3/dist/flowbite.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js">
+  
+    </script>
+</body>
+</html>
