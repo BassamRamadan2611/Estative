@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estative | Leading Real Estate</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Flowbite CSS (built on Tailwind) -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.5.3/dist/flowbite.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- Loading Screen -->
+<div id="loading-screen" class="fixed inset-0 w-screen h-screen z-50" 
+style="background-image: url(images/logo.jpg); background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+">
+  <!-- Loading Animation Overlay -->
+  <div class="absolute inset-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50">
+    <!-- Loading Animation -->
+    <div class="flex space-x-2">
+      <div class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></div>
+      <div class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+      <div class="w-3 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+        
+        <!-- Enhanced Navigation -->
+        <nav class="navbar fixed w-full z-50 top-0 transition-all duration-300">
+            <div class="container flex flex-wrap justify-between items-center mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <!-- Logo -->
+                <a href="#" class="flex items-center">
+                    <div class="w-10 h-10 bg-black rounded-lg 
+                    flex items-center justify-center mr-3">
+                        <span class="text-white font-bold">E</span>
+                    </div>
+                    <span class="self-center text-xl font-bold whitespace-nowrap text-white">Estative</span>
+                </a>
+                
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-toggle" type="button" 
+                        class="inline-flex items-center p-2 ml-3 text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 transition-colors" 
+                        aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                
+                <!-- Menu Items -->
+                <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+                    <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-semibold">
+                        <li><a href="#contact" data-category="developers" 
+                            class="nav-link block py-2 pr-4 pl-3 text-white md:border-0 md:hover:text-white md:p-0 transition-colors">Developers</a></li>
+                        <li><a href="#contact" data-category="brokers" 
+                            class="nav-link block py-2 pr-4 pl-3 text-white md:border-0 md:hover:text-white md:p-0 transition-colors">Brokers</a></li>
+                        <li><a href="#contact" data-category="investors" 
+                            class="nav-link block py-2 pr-4 pl-3 text-white md:border-0 md:hover:text-white md:p-0 transition-colors">Investors</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="flex items-center">
+            <i id="toast-icon" class="mr-2"></i>
+            <span id="toast-message"></span>
+        </div>
+    </div>
+
+    <!-- Full-Width Image Slider Section with Top Countdown Overlay -->
+    <section class="w-full relative pt-0">
+        <!-- Hero Slider Container -->
+        <div id="hero-carousel" class="relative w-full">
+            <!-- Carousel wrapper - Full height and width -->
+            <div class="relative h-screen overflow-hidden">
+                <!-- Slide 1 -->
+                <div class="carousel-item active" data-index="0">
+                    <img 
+                    src="images/2.jpg" 
+                         class="absolute block w-full h-full object-cover object-center" 
+                         alt="Slide 1">
+                    
+                    <!-- Hero Content Overlay -->
+                    <div class="absolute inset-0 flex flex-col justify-center items-center hero-overlay">
+                        <div class="relative z-20 px-4 sm:px-6 lg:px-8 w-full max-w-4xl mx-auto text-center hero-content p-8 rounded-3xl">
+                            <!-- Section Title -->
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl leading-tight">
+                                Join Us at the Estative Crypto Property Expo 2025
+                            </h1>
+                         
+                            <!-- Enhanced Countdown Display -->
+                            <div class="flex items-center justify-center space-x-2 sm:space-x-6 bg-white/10 backdrop-blur-xl px-8 py-6 rounded-3xl border border-white/20 shadow-2xl mb-10 w-max mx-auto">
+                                <span class="text-3xl sm:text-4xl">⏰</span>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="days">00</div>
+                                    <div class="countdown-label">Days</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="hours">00</div>
+                                    <div class="countdown-label">Hours</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="minutes">00</div>
+                                    <div class="countdown-label">Minutes</div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <div class="mt-8">
+                                <a href="#contact" 
+                                   class="cta-button inline-flex items-center text-lg tracking-wide">
+                                    <i class="fas fa-rocket mr-3"></i>
+                                    Register Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-item hidden" data-index="1">
+                    <img 
+                    src="images/1.jpg" 
+                         class="absolute block w-full h-full object-cover object-center" 
+                         alt="Slide 2">
+                    
+                    <!-- Hero Content Overlay -->
+                    <div class="absolute inset-0 flex flex-col justify-center items-center hero-overlay">
+                        <div class="relative z-20 px-4 sm:px-6 lg:px-8 w-full max-w-4xl mx-auto text-center hero-content p-8 rounded-3xl">
+                            <!-- Section Title -->
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl leading-tight">
+                                Discover the Future of Real Estate & Blockchain Innovation
+                            </h1>
+                            
+                            <!-- Enhanced Countdown Display -->
+                            <div class="flex items-center justify-center space-x-2 sm:space-x-6 bg-white/10 backdrop-blur-xl px-8 py-6 rounded-3xl border border-white/20 shadow-2xl mb-10 w-max mx-auto">
+                                <span class="text-3xl sm:text-4xl">⏰</span>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="days2">00</div>
+                                    <div class="countdown-label">Days</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="hours2">00</div>
+                                    <div class="countdown-label">Hours</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="minutes2">00</div>
+                                    <div class="countdown-label">Minutes</div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <div class="mt-8">
+                                <a href="#contact" 
+                                   class="cta-button inline-flex items-center text-lg tracking-wide">
+                                    <i class="fas fa-rocket mr-3"></i>
+                                    Register Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-item hidden" data-index="2">
+                    <img 
+                                        src="images/3.jpg" 
+                         class="absolute block w-full h-full object-cover object-center" 
+                         alt="Slide 3">
+                    
+                    <!-- Hero Content Overlay -->
+                    <div class="absolute inset-0 flex flex-col justify-center items-center hero-overlay">
+                        <div class="relative z-20 px-4 sm:px-6 lg:px-8 w-full max-w-4xl mx-auto text-center hero-content p-8 rounded-3xl">
+                            <!-- Section Title -->
+                            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl leading-tight">
+                                Invest Smart with Crypto-Driven Property Solution
+                            </h1>
+                            
+                            <!-- Enhanced Countdown Display -->
+                            <div class="flex items-center justify-center space-x-2 sm:space-x-6 bg-white/10 backdrop-blur-xl px-8 py-6 rounded-3xl border border-white/20 shadow-2xl mb-10 w-max mx-auto">
+                                <span class="text-3xl sm:text-4xl">⏰</span>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="days3">00</div>
+                                    <div class="countdown-label">Days</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="hours3">00</div>
+                                    <div class="countdown-label">Hours</div>
+                                </div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white">:</div>
+                                
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="minutes3">00</div>
+                                    <div class="countdown-label">Minutes</div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <div class="mt-8">
+                                <a href="#contact" 
+                                   class="cta-button inline-flex items-center text-lg tracking-wide">
+                                    <i class="fas fa-rocket mr-3"></i>
+                                    Register Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Slider indicators -->
+            <div class="absolute z-40 flex -translate-x-1/2 bottom-8 left-1/2 space-x-3">
+                <button type="button" 
+                        class="w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300 active:bg-white active:scale-150 active:shadow-lg carousel-indicator active" 
+                        aria-current="true" aria-label="Slide 1" data-slide-to="0"></button>
+                <button type="button" 
+                        class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300 active:bg-white active:scale-150 active:shadow-lg carousel-indicator" 
+                        aria-current="false" aria-label="Slide 2" data-slide-to="1"></button>
+                <button type="button" 
+                        class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300 active:bg-white active:scale-150 active:shadow-lg carousel-indicator" 
+                        aria-current="false" aria-label="Slide 3" data-slide-to="2"></button>
+            </div>
+
+            <!-- Enhanced Slider controls -->
+            <button type="button" 
+                    class="absolute top-1/2 -translate-y-1/2 left-4 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition-all duration-300 group focus:outline-none shadow-lg carousel-control-prev" 
+                    data-carousel-prev>
+                <svg class="w-6 h-6 text-white group-hover:text-gray-900 transition-colors" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+                <span class="sr-only">Previous slide</span>
+            </button>
+            <button type="button" 
+                    class="absolute top-1/2 -translate-y-1/2 right-4 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/40 transition-all duration-300 group focus:outline-none shadow-lg carousel-control-next" 
+                    data-carousel-next>
+                <svg class="w-6 h-6 text-white group-hover:text-gray-900 transition-colors" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="sr-only">Next slide</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Enhanced Registration Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-4xl w-full mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+                <!-- Enhanced Header Section -->
+                <div class="form-header text-white p-8 sm:p-12 text-center relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                            Register for <span class="block">Estative Crypto Property Expo 2025</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl opacity-95 mb-8 max-w-2xl mx-auto leading-relaxed">
+                            Secure your exclusive access to the premier blockchain real estate event of the year
+                        </p>
+                        <div class="w-24 h-1 bg-white mx-auto rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Content Section -->
+                <div class="p-6 sm:p-8 lg:p-12">
+                    <!-- Category Selection -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <button class="category-btn active" data-category="developers">
+                            <i class="fas fa-code mr-2"></i>
+                            Developer Proposal
+                        </button>
+                        <button class="category-btn" data-category="brokers">
+                            <i class="fas fa-handshake mr-2"></i>
+                            Broker Proposal
+                        </button>
+                        <button class="category-btn" data-category="investors">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            Investor Proposal
+                        </button>
+                    </div>
+
+                    <!-- Category Information Container -->
+                    <div class="category-info-container text-center mb-8">
+                        <div id="developers-info" class="category-info">
+                            <p class="text-sm text-gray-600 font-medium">
+                                Estative Crypto Property Expo 2025<br>October 11, 2025 – Grand Ballroom, Le Meridien Hotel, Dubai
+                            </p>
+                        </div>
+                        <div id="brokers-info" class="category-info hidden">
+                            <p class="text-sm text-gray-600 font-medium">
+                                Estative Crypto Property Expo 2025<br>October 11, 2025 – Grand Ballroom, Le Meridien Hotel, Dubai
+                            </p>
+                        </div>
+                        <div id="investors-info" class="category-info hidden">
+                            <p class="text-sm text-gray-600 font-medium">
+                                Estative Crypto Property Expo 2025<br>October 11, 2025 – Grand Ballroom, Le Meridien Hotel, Dubai
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Forms Container -->
+                    <div class="form-container">
+                        <!-- Developers Form -->
+                        <form id="developers-form" class="form-category">
+                            <!-- Developer Proposal Accordion -->
+                            <div id="accordion-developers" class="mb-8">
+                                <h2 id="accordion-developers-heading-1">
+                                    <button type="button" class="accordion-header " data-accordion-target="accordion-developers-body-1" aria-expanded="true" aria-controls="accordion-developers-body-1">
+                                        <span>Executive Summary</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-developers-body-1" class="accordion-content 
+                                " aria-labelledby="accordion-developers-heading-1">
+                                    <p>Estative proudly presents the first and largest cryptocurrency-driven real estate event in the GCC and MENA region. The Estative Crypto Property Expo 2025 is not just an exhibition – it is a global platform where real estate developers, brokers, and investors come together to unlock the future of property transactions through cryptocurrency.</p>
+                                    <p>With the global crypto economy reaching unprecedented levels, this Expo positions developers at the center of a historic shift, opening direct access to international investors and high-net-worth individuals who prefer secure, fast, and borderless transactions.</p>
+                                </div>
+
+                                <h2 id="accordion-developers-heading-2">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-developers-body-2" aria-expanded="false" aria-controls="accordion-developers-body-2">
+                                        <span>Event Overview</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-developers-body-2" class="accordion-content" aria-labelledby="accordion-developers-heading-2">
+                                    <p><strong>Organized by:</strong> Estative</p>
+                                    <p><strong>Audience:</strong> Brokers, global crypto investors, industry leaders</p>
+                                    <p><strong>Highlights:</strong></p>
+                                    <ul>
+                                        <li>First platform in GCC & MENA to facilitate property sales with cryptocurrency</li>
+                                        <li>Exclusive developer showcases to present projects directly to investors</li>
+                                        <li>The largest global broker training on crypto real estate sales, equipping thousands of brokers</li>
+                                        <li>Networking opportunities with international brokers, investors, private offices, and wealth management</li>
+                                    </ul>
+                                </div>
+
+                                <h2 id="accordion-developers-heading-3">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-developers-body-3" aria-expanded="false" aria-controls="accordion-developers-body-3">
+                                        <span>Why Developers Should Join</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-developers-body-3" class="accordion-content" aria-labelledby="accordion-developers-heading-3">
+                                    <ul>
+                                        <li>Showcase projects to a global audience of crypto investors ready to transact.</li>
+                                        <li>Access a trained broker network specializing in selling real estate through cryptocurrency.</li>
+                                        <li>Position their brand at the forefront of real estate innovation.</li>
+                                        <li>Gain exclusive visibility on the Estative platform, connecting with crypto buyers worldwide.</li>
+                                        <li>Strengthen sales pipelines through direct investor engagement during the event.</li>
+                                    </ul>
+                                    <p>For developers, this means greater sales efficiency and higher closing rates, as brokers leave the training prepared to market and sell developer projects through crypto.</p>
+                                </div>
+
+                                <h2 id="accordion-developers-heading-4">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-developers-body-4" aria-expanded="false" aria-controls="accordion-developers-body-4">
+                                        <span>The Crypto Opportunity</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-developers-body-4" class="accordion-content" aria-labelledby="accordion-developers-heading-4">
+                                    <ul>
+                                        <li>In Dubai alone, billions of dirhams in property transactions were completed using cryptocurrency in 2024.</li>
+                                        <li>Hundreds of properties were successfully sold through digital currencies, reflecting strong investor demand.</li>
+                                        <li>Globally, cryptocurrency holders now represent a multi-trillion-dollar market with increasing interest in tangible, stable assets such as real estate.</li>
+                                    </ul>
+                                    <p>By joining this Expo, developers secure direct access to one of the fastest-growing investor segments worldwide.</p>
+                                </div>
+
+                                <h2 id="accordion-developers-heading-5">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-developers-body-5" aria-expanded="false" aria-controls="accordion-developers-body-5">
+                                        <span>Training & Institutional Collaboration</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-developers-body-5" class="accordion-content" aria-labelledby="accordion-developers-heading-5">
+                                    <p>The Estative Crypto Property Expo includes the largest dedicated training program for real estate brokers worldwide, focused exclusively on selling properties with cryptocurrency.</p>
+                                    <p>Training is a cornerstone of Estative's mission to empower real estate professionals. We lead the largest global training program for brokers, focusing on:</p>
+                                    <ul>
+                                        <li>Crypto-based real estate transactions</li>
+                                        <li>Legal and compliance aspects</li>
+                                        <li>Client conversion and faster deal closures</li>
+                                    </ul>
+                                    <p>To ensure quality and credibility, this program is executed in collaboration with the Innovation Expert Real Estate Institute, an accredited academic partner in the field.</p>
+                                    <p><strong>Developer Value:</strong> By engaging with a network of certified brokers, developers benefit from faster sales execution, higher reliability, and stronger investor confidence.</p>
+                                </div>
+
+                                <h2 id="accordion-developers-heading-6">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-developers-body-6" aria-expanded="false" aria-controls="accordion-developers-body-6">
+                                        <span>Developer Benefits & Packages</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-developers-body-6" class="accordion-content" aria-labelledby="accordion-developers-heading-6">
+                                    <ul>
+                                        <li>Showcase Booths & Project Presentations in the Grand Ballroom.</li>
+                                        <li>Branding & Marketing Exposure across Estative and partner media channels.</li>
+                                        <li>Inclusion in Estative Platform Listings, reaching international crypto buyers.</li>
+                                        <li>Direct Investor Engagement through networking sessions and panel discussions.</li>
+                                        <li>Media Coverage & Global Reach through specialized real estate and crypto channels.</li>
+                                    </ul>
+                                    <p>To strengthen our vision of enabling developers with modern tools, Estative provides the option to integrate a secure, next-generation crypto payment gateway.</p>
+                                    <p><strong>Key Benefits for Developers:</strong></p>
+                                    <ul>
+                                        <li><strong>Wider Buyer Reach:</strong> Expand your sales audience to include global crypto investors, early adopters, and new-generation buyers.</li>
+                                        <li><strong>Seamless Transactions:</strong> Buyers can pay down-payments, installments, or full property value using crypto wallets or NFC-enabled crypto cards. Payments are confirmed in real-time.</li>
+                                        <li><strong>Secure & Transparent:</strong> Enterprise-grade security ensures every transaction is verified, recorded, and transparent.</li>
+                                        <li><strong>Boost Sales Velocity:</strong> Flexible crypto payment channels reduce friction, enabling faster decisions and quicker unit allocations.</li>
+                                    </ul>
+                                    <p><strong>Developer Value Proposition:</strong></p>
+                                    <p><strong>Strategic Impact:</strong></p>
+                                    <ul>
+                                        <li>Stand out in a competitive market as crypto-friendly innovators.</li>
+                                        <li>Accelerate sales closures with international investors.</li>
+                                        <li>Enhance their brand as future-ready and digitally advanced.</li>
+                                    </ul>
+                                    <p>📲 Estative – powering the future of property sales</p>
+                                </div>
+
+                                <h2 id="accordion-developers-heading-7">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-developers-body-7" aria-expanded="false" aria-controls="accordion-developers-body-7">
+                                        <span>Call to Action</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-developers-body-7" class="accordion-content" aria-labelledby="accordion-developers-heading-7">
+                                    <p>Spaces for developer participation are highly limited.</p>
+                                    <p>This is the moment to secure your place in the biggest real estate–crypto convergence in the world.</p>
+                                    <p>Join us at the Estative Crypto Property Expo 2025 and be at the forefront of the new era of real estate.</p>
+                                </div>
+
+                            </div>
+                       <div class="m-4 text-center px-4 sm:px-6 lg:px-8">
+  <p class="text-base sm:text-lg md:text-xl font-semibold text-gray-800 leading-relaxed">
+    📩 For <span class="text-blue-600">registration</span> and 
+    <span class="text-green-600">partnership opportunities</span>, 
+    please fill out the form below.
+  </p>
+</div>
+
+
+                            <!-- Developers Form Fields -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-name">Full Name *</label>
+                                    <input type="text" id="dev-name" name="dev-name" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Enter your full name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-designation">Designation *</label>
+                                    <input type="text" id="dev-designation" name="dev-designation" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Your job title or role" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-company">Company Name *</label>
+                                    <input type="text" id="dev-company" name="dev-company" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Your company or organization" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-email">Email Address *</label>
+                                    <input type="email" id="dev-email" name="dev-email" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="your.email@company.com" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-mobile">Mobile Number</label>
+                                    <input type="tel" id="dev-mobile" name="dev-mobile" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="+1234567890">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="dev-message">Special Requirements</label>
+                                <textarea id="dev-message" name="dev-message" rows="4" 
+                                          class="form-input w-full resize-vertical border-gray-300" 
+                                          placeholder="Tell us about your technical requirements or specific interests..."></textarea>
+                            </div>
+                        </form>
+
+                        <!-- Brokers Form -->
+                        <form id="brokers-form" class="form-category hidden">
+                            <!-- Broker Proposal Accordion -->
+                            <div id="accordion-brokers" class="mb-8">
+                                <h2 id="accordion-brokers-heading-1">
+                                    <button type="button" class="accordion-header " data-accordion-target="accordion-brokers-body-1" aria-expanded="true" aria-controls="accordion-brokers-body-1">
+                                        <span>Executive Summary</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-brokers-body-1" class="accordion-content " aria-labelledby="accordion-brokers-heading-1">
+                                    <p>The Estative Crypto Property Expo 2025 is a historic event, bringing together developers, brokers, and crypto investors to redefine the future of real estate transactions. For brokers, it is the largest global training and networking platform, designed to equip you with the skills and certifications to close real estate transactions using cryptocurrency.</p>
+                                </div>
+
+                                <h2 id="accordion-brokers-heading-2">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-brokers-body-2" aria-expanded="false" aria-controls="accordion-brokers-body-2">
+                                        <span>Why Brokers Should Join</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-brokers-body-2" class="accordion-content" aria-labelledby="accordion-brokers-heading-2">
+                                    <ul>
+                                        <li>Attend the world's biggest broker training on crypto property sales.</li>
+                                        <li>Get certified in crypto-enabled transactions through Estative and Innovation Expert Real Estate Institute.</li>
+                                        <li>Access exclusive developer projects seeking crypto buyers.</li>
+                                        <li>Build trust and credibility with high-net-worth investors.</li>
+                                        <li>Expand your portfolio by tapping into the multi-trillion-dollar crypto economy.</li>
+                                    </ul>
+                                </div>
+
+                                <h2 id="accordion-brokers-heading-3">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-brokers-body-3" aria-expanded="false" aria-controls="accordion-brokers-body-3">
+                                        <span>Training & Certification Program</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-brokers-body-3" class="accordion-content" aria-labelledby="accordion-brokers-heading-3">
+                                    <p><strong>Core Modules:</strong></p>
+                                    <ul>
+                                        <li>Fundamentals of cryptocurrency in real estate.</li>
+                                        <li>Compliance, KYC, and AML frameworks.</li>
+                                        <li>Sales techniques for crypto investors.</li>
+                                        <li>Case studies of Dubai's successful crypto property deals.</li>
+                                    </ul>
+                                    <p><strong>Outcome:</strong></p>
+                                    <ul>
+                                        <li>Certificate of Completion co-branded by Estative and Innovation Expert Real Estate Institute.</li>
+                                        <li>Recognition as a Crypto-Certified Broker.</li>
+                                    </ul>
+                                </div>
+
+                                <h2 id="accordion-brokers-heading-4">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-brokers-body-4" aria-expanded="false" aria-controls="accordion-brokers-body-4">
+                                        <span>Networking Opportunities</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-brokers-body-4" class="accordion-content" aria-labelledby="accordion-brokers-heading-4">
+                                    <ul>
+                                        <li>Meet 100+ developers showcasing crypto-enabled projects.</li>
+                                        <li>Access exclusive deal rooms with investors.</li>
+                                        <li>Build international partnerships to expand your global reach.</li>
+                                    </ul>
+                                </div>
+
+                                <h2 id="accordion-brokers-heading-5">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-brokers-body-5" aria-expanded="false" aria-controls="accordion-brokers-body-5">
+                                        <span>Call to Action</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-brokers-body-5" class="accordion-content" aria-labelledby="accordion-brokers-heading-5">
+                                    <p>This is your opportunity to be at the forefront of real estate innovation.</p>
+                                    <p>Secure your seat at the Estative Crypto Property Expo 2025 and become a certified leader in crypto property sales.</p>
+                                </div>
+                            </div>
+                   <div class="m-4 text-center px-4 sm:px-6 lg:px-8">
+  <p class="text-base sm:text-lg md:text-xl font-semibold text-gray-800 leading-relaxed">
+    📩 Please fill out the form below to <span class="text-blue-600">register</span>.
+  </p>
+</div>
+
+
+                            <!-- Brokers Form Fields -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-name">Full Name *</label>
+                                    <input type="text" id="broker-name" name="broker-name" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Enter your full name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-designation">Designation *</label>
+                                    <input type="text" id="broker-designation" name="broker-designation" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Your job title or role" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-company">Brokerage Name *</label>
+                                    <input type="text" id="broker-company" name="broker-company" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Your brokerage or organization" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-mobile">Mobile Number *</label>
+                                    <input type="tel" id="broker-mobile" name="broker-mobile" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="+1234567890" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-email">Email Address *</label>
+                                    <input type="email" id="broker-email" name="broker-email" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="your.email@company.com" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="broker-message">Property Focus</label>
+                                <textarea id="broker-message" name="broker-message" rows="4" 
+                                          class="form-input w-full resize-vertical border-gray-300" 
+                                          placeholder="What types of properties are you most interested in listing?"></textarea>
+                            </div>
+                        </form>
+
+                        <!-- Investors Form -->
+                        <form id="investors-form" class="form-category hidden">
+                            <!-- Investor Proposal Accordion -->
+                            <div id="accordion-investors" class="mb-8">
+                                <h2 id="accordion-investors-heading-1">
+                                    <button type="button" class="accordion-header " data-accordion-target="accordion-investors-body-1" aria-expanded="true" aria-controls="accordion-investors-body-1">
+                                        <span>Executive Summary</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-investors-body-1" class="accordion-content " aria-labelledby="accordion-investors-heading-1">
+                                    <p>The Estative Crypto Property Expo 2025 is the first and largest event in the GCC & MENA dedicated to cryptocurrency-driven real estate transactions. For investors, it offers a direct gateway to premium property projects worldwide, with the ability to purchase securely using cryptocurrency.</p>
+                                </div>
+
+                                <h2 id="accordion-investors-heading-2">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-investors-body-2" aria-expanded="false" aria-controls="accordion-investors-body-2">
+                                        <span>Why Investors Should Join</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-investors-body-2" class="accordion-content" aria-labelledby="accordion-investors-heading-2">
+                                    <ul>
+                                        <li>Gain exclusive access to 100+ projects from top developers.</li>
+                                        <li>Explore secure, borderless property investments using your crypto portfolio.</li>
+                                        <li>Network with certified brokers trained in crypto real estate sales.</li>
+                                        <li>Enjoy tailored opportunities in Dubai, the global hub for crypto property.</li>
+                                    </ul>
+                                </div>
+
+                                <h2 id="accordion-investors-heading-3">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-investors-body-3" aria-expanded="false" aria-controls="accordion-investors-body-3">
+                                        <span>The Crypto Advantage</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-investors-body-3" class="accordion-content" aria-labelledby="accordion-investors-heading-3">
+                                    <ul>
+                                        <li><strong>Transparency & Security:</strong> Blockchain-powered transactions with full compliance.</li>
+                                        <li><strong>Speed:</strong> Instant, borderless settlements.</li>
+                                        <li><strong>Diversification:</strong> Convert digital wealth into tangible real estate assets.</li>
+                                        <li><strong>Proven Market:</strong> Billions of dirhams in Dubai property transactions via crypto in 2024.</li>
+                                    </ul>
+                                </div>
+
+                                <h2 id="accordion-investors-heading-4">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-investors-body-4" aria-expanded="false" aria-controls="accordion-investors-body-4">
+                                        <span>Investor Benefits</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-investors-body-4" class="accordion-content" aria-labelledby="accordion-investors-heading-4">
+                                    <ul>
+                                        <li><strong>Exclusive Deal Rooms:</strong> Access pre-screened opportunities.</li>
+                                        <li><strong>VIP Investor Lounge:</strong> Dedicated concierge support.</li>
+                                        <li><strong>Wallet Onboarding Support:</strong> Smooth integration of crypto payment solutions.</li>
+                                        <li><strong>Direct Developer Access:</strong> Build relationships with project owners.</li>
+                                    </ul>
+                                </div>
+
+                                <h2 id="accordion-investors-heading-5">
+                                    <button type="button" class="accordion-header" data-accordion-target="accordion-investors-body-5" aria-expanded="false" aria-controls="accordion-investors-body-5">
+                                        <span>Call to Action</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="accordion-investors-body-5" class="accordion-content" aria-labelledby="accordion-investors-heading-5">
+                                    <p>The Estative Crypto Property Expo 2025 is the gateway to transforming your digital wealth into premium real estate assets.</p>
+                                    <p>Join us in Dubai and be part of the future of property investment.</p>
+                                </div>
+                            </div>
+                           <div class="m-4 text-center px-4 sm:px-6 lg:px-8">
+  <p class="text-base sm:text-lg md:text-xl font-semibold text-gray-800 leading-relaxed">
+    📩 Please fill out the form below to 
+    <span class="text-blue-600">register</span>.
+  </p>
+</div>
+
+
+                            <!-- Investors Form Fields -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="investor-name">Full Name *</label>
+                                    <input type="text" id="investor-name" name="investor-name" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="Enter your full name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="investor-email">Email Address *</label>
+                                    <input type="email" id="investor-email" name="investor-email" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="your.email@company.com" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="investor-mobile">Mobile Number</label>
+                                    <input type="tel" id="investor-mobile" name="investor-mobile" 
+                                           class="form-input w-full border-gray-300" 
+                                           placeholder="+1234567890">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-gray-700 mb-3 font-semibold text-sm uppercase tracking-wide" for="investor-message">Investment Focus</label>
+                                    <textarea id="investor-message" name="investor-message" rows="4" 
+                                              class="form-input w-full resize-vertical border-gray-300" 
+                                              placeholder="What types of crypto property investments interest you most? (Commercial, Residential, Land, etc.)"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Enhanced Submit Section -->
+                    <div class="mt-12 text-center border-t border-gray-100 pt-8">
+                        <button id="submit-btn" class="cta-button inline-flex items-center text-lg tracking-wide px-8 py-4 mx-auto">
+                            <i class="fas fa-paper-plane mr-3"></i>
+                            Submit Registration
+                        </button>
+                        
+                        <p class="mt-6 text-gray-600 text-sm font-medium max-w-md mx-auto">
+                            Secure your access to the Estative Crypto Property Expo 2025 and join the future of real estate investment
+                        </p>
+                    </div>
+
+                    <!-- Enhanced Success Message -->
+                    <div id="success-message" class="success-message mt-8 p-8 bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-2xl text-center border border-green-200 hidden">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-check-circle text-4xl text-green-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Registration Successful!</h3>
+                        <p class="text-lg mb-6">Thank you for registering. We've sent a confirmation email with all the event details and your personalized access code.</p>
+                        <div class="inline-flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Check your inbox
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Error Message -->
+                    <div id="error-message" class="error-message mt-8 p-6 bg-red-50 text-red-700 rounded-xl text-center border border-red-200 hidden">
+                        <i class="fas fa-exclamation-triangle text-3xl mb-3"></i>
+                        <h3 class="text-lg font-semibold mb-2">Something went wrong</h3>
+                        <p>Please check your information and try again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="section-header">
+            <h2>Event Location</h2>
+            <p>Join us at the prestigious Le Méridien Dubai Hotel & Conference Centre for the Estative Crypto Property Expo 2025</p>
+        </div>
+        
+        <div class="map-container">
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.674436516757!2d55.3471396!3d25.2491549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d052da27f4b%3A0x1e08c07158e27b01!2sLe%20M%C3%A9ridien%20Dubai%20Hotel%20%26%20Conference%20Centre!5e1!3m2!1sen!2seg!4v1758388752772!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-black py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-center space-x-4 text-center">
+                <!-- Brand -->
+                <div class="flex items-center">
+                    <div class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-copyright text-white text-sm"></i>
+                    </div>
+                    <span class="text-white text-sm sm:text-base font-medium">2025 ESTATIVE</span>
+                </div>
+                <!-- Divider -->
+                <span class="text-white">|</span>
+                <!-- Rights -->
+                <span class="text-white text-sm sm:text-base">All Rights Reserved</span>
+            </div>
+        </div>
+    </footer>
+
+   <script src="script.js"></script>
+</body>
+</html>
